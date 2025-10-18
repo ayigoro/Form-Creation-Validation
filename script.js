@@ -1,32 +1,32 @@
-// Selecting form object using DOM
-const form = document.getElementById('registration-form')
-form.addEventListener('submit',function (event){
+document.addEventListener('DOMContentLoaded',()=>{
+ const form = document.getElementById('registration-form')
+ const feedbackDiv = document.getElementById('feedback-form')
+ form.addEventListener('submit',(event)=>{
   event.preventDefault()
- const usernameInput = document.getElementById('username')
-const usernameError = document.getElementById('usernameError')
-if (usernameInput.value.length < 3){
-  usernameError.textContent = 'Username must be at least 3 characters long.'
-}else{
-  usernameError.textContent = ''
-}
+ })
+ const usernameInput = document.getElementById('username').value.trim()
+ const emailInput = document.getElementById('email').value.trim()
+ const passwordInput = document.getElementById('password').value.trim()
 
-const emailInput = document.getElementById('email')
-const emailError = document.getElementById(emailError)
- if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(emailInput.value)) {
-        emailError.textContent = 'Please enter a valid email address.';}
- else{
-  emailError.textContent = ''
+ const isValid = true
+ const messages = []
+
+ if (!email.include('@') || !email.include('.')){
+   isValid = false
+   messages.push("Email must contain both '@' and '.' characters.")
  }
+  if (passwordInput.length < 8){
+    isValid = false
+    messages.push("Password must be at least 8 characters long.")
+  }
 
- const passwordInput = document.getElementById('password')
- const passwordError = document.getElementById('passwordError')
- if (passwordInput.value.length < 6){
-  passwordError.textContent = 'Please enter a valid email address.'
- }else{
-  passwordError.textContent = ''
- }
-
-
-form.submit()
+  feedbackDiv.style.display = 'block'
+  if (isValid == true){
+    feedbackDiv.textContent = 'Registration successful!'
+    feedbackDiv.style.color = '#28a745'
+  }else{
+    feedbackDiv.innerHTML = messages.join("<br>")
+    feedbackDiv.style.color = '#dc3545'
+  }
 })
-
+ 

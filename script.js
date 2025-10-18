@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded",function(){
  const isValid = true
  const messages = []
 
+ if (usernameInput.length < 3){
+  isValid =false
+  messages.push("username must be more than 3")
+ }
+
  if (!email.include("@") || !email.include(".")){
    isValid = false
    messages.push("Email must contain both '@' and '.' characters.")

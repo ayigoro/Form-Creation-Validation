@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded",function(){
 
  if (usernameInput.length < 3){
   isValid =false
-  messages.push("username must be more than 3")
+  messages.push("username must be at least more than 3 character long")
  }
 
- if (!email.include("@") || !email.include(".")){
+ if (!emailInput.include("@") || !email.include(".")){
    isValid = false
    messages.push("Email must contain both '@' and '.' characters.")
  }
